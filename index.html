@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMP Negeri 2 Ulujami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* On-Load Entry Animation */
+      .load-in-item {
+        transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+      .load-in-item.start {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .load-in-item.end {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Base state for all on-scroll animations */
+      .animate-on-scroll {
+        /* "Super Smooth" cubic-bezier curve and longer duration */
+        transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), 
+                    transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+                    filter 1s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+      
+      /* Animation Types - add subtle 3D rotation and refined blur */
+      .animate-on-scroll.fade-in { opacity: 0; filter: blur(4px); }
+      .animate-on-scroll.slide-up { opacity: 0; transform: translateY(30px) rotateX(-15deg); filter: blur(4px); }
+      .animate-on-scroll.slide-left { opacity: 0; transform: translateX(30px) rotateY(15deg); filter: blur(4px); }
+      .animate-on-scroll.slide-right { opacity: 0; transform: translateX(-30px) rotateY(-15deg); filter: blur(4px); }
+      .animate-on-scroll.zoom-in { opacity: 0; transform: scale(0.9); filter: blur(4px); }
+      
+      /* Visible state for all on-scroll animations - remove effects */
+      .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0) translateX(0) scale(1) rotateX(0) rotateY(0);
+        filter: blur(0);
+      }
+
+      /* Lightbox Styles */
+      @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+      }
+      @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.9); }
+          to { opacity: 1; transform: scale(1); }
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1a4b8c',
+              secondary: '#2e8b57',
+              accent: '#f39c12',
+              light: '#f5f5f5',
+              dark: '#333333',
+            },
+            fontFamily: {
+              sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-light text-dark font-sans">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
